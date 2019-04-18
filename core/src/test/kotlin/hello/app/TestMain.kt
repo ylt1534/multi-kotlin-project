@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.PropertySource
 
 @SpringBootApplication(scanBasePackages = ["hello"])
-@PropertySource("classpath:cli-application.properties")
+@PropertySource("classpath:config-application.properties")
 open class TestMain
 
 fun main(args: Array<String>) {

@@ -1,13 +1,14 @@
-package hello.app
+package hello.service
 
-import hello.service.MyService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class MyController(private val myService: MyService) {
+class CliController(
+    private val cliService: CliService
+) {
     @GetMapping("/")
-    fun home(): String {
-        return myService.message()
+    fun cliLog(): String {
+        return cliService.message()
     }
 }

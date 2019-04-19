@@ -1,2 +1,2 @@
 
-include("cli", "core", "config")
+include("cli", "core", "config", "log-config")

@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true">
 
-    <springProperty name="logDir" source="logging.path" />
+    <springProperty name="current.service" source="logging.current.service" />
+<!--    <property name="log.dir" value="${TOMCAT_LOG_DIR}"/>-->
     <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">
         <file>
-            ${logDir}/log.log
+<!--            ${log.dir}/-->
+            ${current.service}/log.log
         </file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>
-                %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n
+                %d{dd-MM-yyyy HH:mm:ss.SSS} %green([%thread]) %highlight(%-5level) %logger.%M - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{dd-MM-yyyy HH:mm:ss.SSS} %green([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n
             </pattern>
         </encoder>
     </appender>
 
     <root level="INFO" additivity="false">
         <appender-ref ref="SAVE-TO-FILE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 
 </configuration>
